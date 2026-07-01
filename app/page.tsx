@@ -1,5 +1,7 @@
 import { ServiceCard } from "./components/home/ServiceCard";
 import { PortfolioProjectCard } from "./components/home/PortfolioProjectCard";
+import { StatsBand } from "./components/home/StatsBand";
+import { TechStackStrip } from "./components/home/TechStackStrip";
 import { FaqAccordion } from "./components/FaqAccordion";
 import { projects } from "./data/projects";
 import { HeroSection } from "./components/motion/HeroSection";
@@ -10,6 +12,8 @@ import {
   StaggerItem,
 } from "./components/motion/primitives";
 import { WhatsAppButton } from "./components/motion/WhatsAppButton";
+import { GrainOverlay } from "./components/ui/GrainOverlay";
+import { SectionHeader } from "./components/ui/SectionHeader";
 
 const services = [
   {
@@ -159,21 +163,63 @@ const faqs = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
+
+const professionalServiceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "PIQU Labs",
+  telephone: "+6285787091529",
+  areaServed: ["Bandung", "Cimahi"],
+  url: "https://piqulabs.com",
+  priceRange: "Rp900.000 - Rp2.000.000",
+};
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-bg text-content">
+    <>
+      <GrainOverlay />
+      <main className="relative z-[2] min-h-screen bg-bg text-content">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(professionalServiceJsonLd),
+        }}
+      />
       <HeroSection />
 
+      <div className="bg-surface">
+        <StatsBand />
+        <TechStackStrip />
+      </div>
+
       {/* LAYANAN */}
-      <RevealSection className="border-t border-border-soft px-6 py-24">
+      <RevealSection className="bg-bg px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Layanan <span className="text-gradient">Kami</span>
-          </h2>
-          <p className="mt-4 max-w-2xl text-content-muted">
-            Dari landing page sederhana sampai sistem booking. Pilih yang sesuai
-            tahap bisnis kamu sekarang.
-          </p>
+          <SectionHeader
+            eyebrow="01 / LAYANAN"
+            title={
+              <>
+                Layanan <span className="text-gradient">Kami</span>
+              </>
+            }
+            description="Dari landing page sederhana sampai sistem booking. Pilih yang sesuai tahap bisnis kamu sekarang."
+          />
 
           <StaggerGroup className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-12 lg:grid-rows-2">
             {services.map((service) => (
@@ -184,18 +230,17 @@ export default function Home() {
       </RevealSection>
 
       {/* PORTFOLIO */}
-      <RevealSection
-        id="portfolio"
-        className="border-t border-border-soft px-6 py-24"
-      >
+      <RevealSection id="portfolio" className="bg-surface px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Portfolio <span className="text-gradient">Pilihan</span>
-          </h2>
-          <p className="mt-4 max-w-2xl text-content-muted">
-            Dari klien aktif hingga konsep desain untuk berbagai industri —
-            barbershop, klinik, hingga travel.
-          </p>
+          <SectionHeader
+            eyebrow="02 / PORTFOLIO"
+            title={
+              <>
+                Portfolio <span className="text-gradient">Pilihan</span>
+              </>
+            }
+            description="Dari klien aktif hingga konsep desain untuk berbagai industri — barbershop, klinik, hingga travel."
+          />
 
           <StaggerGroup className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             {projects.map((project) => (
@@ -206,15 +251,17 @@ export default function Home() {
       </RevealSection>
 
       {/* RATE CARD */}
-      <RevealSection className="border-t border-border-soft px-6 py-24">
+      <RevealSection className="bg-bg px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Paket & <span className="text-gradient">Harga</span>
-          </h2>
-          <p className="mt-4 max-w-2xl text-content-muted">
-            Harga transparan, tanpa biaya tersembunyi. Semua paket sudah
-            termasuk domain, hosting 1 tahun, dan garansi 30 hari.
-          </p>
+          <SectionHeader
+            eyebrow="03 / HARGA"
+            title={
+              <>
+                Paket & <span className="text-gradient">Harga</span>
+              </>
+            }
+            description="Harga transparan, tanpa biaya tersembunyi. Semua paket sudah termasuk domain, hosting 1 tahun, dan garansi 30 hari."
+          />
 
           <StaggerGroup className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {pricing.map((plan) => (
@@ -222,7 +269,7 @@ export default function Home() {
                 <MotionCard
                   className={`relative flex h-full flex-col rounded-2xl border p-6 ${
                     plan.popular
-                      ? "border-bronze bg-surface-2 shadow-[0_0_0_1px_rgba(169,113,63,0.2)] md:-mt-2 md:mb-2 md:py-8"
+                      ? "shimmer-border border-bronze bg-surface-2 shadow-[0_0_0_1px_rgba(169,113,63,0.2)] md:-mt-2 md:mb-2 md:py-8"
                       : "border-border-soft bg-surface"
                   }`}
                 >
@@ -263,23 +310,25 @@ export default function Home() {
       </RevealSection>
 
       {/* KENAPA PIQU */}
-      <RevealSection className="border-t border-border-soft px-6 py-24">
+      <RevealSection className="bg-surface px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 lg:grid-cols-5">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                Kenapa <span className="text-gradient">PIQU Labs</span>
-              </h2>
-              <p className="mt-4 text-content-muted">
-                Bukan cuma jadiin website, tapi partner yang bantu bisnis lokal
-                tampil profesional di internet.
-              </p>
+              <SectionHeader
+                eyebrow="04 / KENAPA PIQU"
+                title={
+                  <>
+                    Kenapa <span className="text-gradient">PIQU Labs</span>
+                  </>
+                }
+                description="Bukan cuma jadiin website, tapi partner yang bantu bisnis lokal tampil profesional di internet."
+              />
             </div>
             <div className="space-y-6 lg:col-span-3">
               {reasons.map((item, i) => (
                 <div
                   key={item.title}
-                  className={`flex gap-6 rounded-2xl border border-border-soft bg-surface p-6 ${i === 0 ? "lg:ml-8" : i === 2 ? "lg:mr-8" : ""}`}
+                  className={`flex gap-6 rounded-2xl border border-border-soft bg-bg p-6 ${i === 0 ? "lg:ml-8" : i === 2 ? "lg:mr-8" : ""}`}
                 >
                   <span className="text-3xl font-bold text-bronze/40">
                     {String(i + 1).padStart(2, "0")}
@@ -296,15 +345,17 @@ export default function Home() {
       </RevealSection>
 
       {/* PROSES KERJA */}
-      <RevealSection className="border-t border-border-soft px-6 py-24">
+      <RevealSection className="bg-bg px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Proses <span className="text-gradient">Kerja</span>
-          </h2>
-          <p className="mt-4 max-w-2xl text-content-muted">
-            Empat langkah dari ide sampai website live. Tanpa ribet, semua
-            via WhatsApp.
-          </p>
+          <SectionHeader
+            eyebrow="05 / PROSES"
+            title={
+              <>
+                Proses <span className="text-gradient">Kerja</span>
+              </>
+            }
+            description="Empat langkah dari ide sampai website live. Tanpa ribet, semua via WhatsApp."
+          />
 
           <ol className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border-soft bg-border-soft sm:grid-cols-2 lg:grid-cols-4">
             {process.map((step, i) => (
@@ -328,14 +379,17 @@ export default function Home() {
       </RevealSection>
 
       {/* FAQ */}
-      <RevealSection className="border-t border-border-soft px-6 py-24">
+      <RevealSection className="bg-surface px-6 py-24">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Pertanyaan <span className="text-gradient">Umum</span>
-          </h2>
-          <p className="mt-4 text-content-muted">
-            Belum ketemu jawabannya? Langsung chat aja, gratis.
-          </p>
+          <SectionHeader
+            eyebrow="06 / FAQ"
+            title={
+              <>
+                Pertanyaan <span className="text-gradient">Umum</span>
+              </>
+            }
+            description="Belum ketemu jawabannya? Langsung chat aja, gratis."
+          />
           <div className="mt-10">
             <FaqAccordion items={faqs} />
           </div>
@@ -343,16 +397,24 @@ export default function Home() {
       </RevealSection>
 
       {/* CTA AKHIR */}
-      <RevealSection className="border-t border-border-soft px-6 py-24">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-border-soft bg-surface px-8 py-16 text-center sm:px-16">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Siap Bikin Website{" "}
-            <span className="text-gradient">Profesional</span>?
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg text-content-muted">
-            Ceritain kebutuhan bisnis kamu. Konsultasi gratis, tanpa komitmen.
-            Kami bantu pilih paket yang paling masuk akal.
-          </p>
+      <RevealSection className="bg-bg px-6 py-24">
+        <div className="relative mx-auto max-w-4xl">
+          <div
+            aria-hidden
+            className="section-glow absolute left-1/2 top-0 h-64 w-full max-w-lg -translate-x-1/2"
+          />
+          <div className="relative rounded-3xl border border-border-soft bg-surface px-8 py-16 text-center sm:px-16">
+            <SectionHeader
+              eyebrow="07 / KONSULTASI"
+              title={
+                <>
+                  Siap Bikin Website{" "}
+                  <span className="text-gradient">Profesional</span>?
+                </>
+              }
+              description="Ceritain kebutuhan bisnis kamu. Konsultasi gratis, tanpa komitmen. Kami bantu pilih paket yang paling masuk akal."
+              align="center"
+            />
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <WhatsAppButton
               href="https://wa.me/6285787091529?text=Halo%20PIQU%20Labs,%20saya%20mau%20konsultasi%20website"
@@ -369,8 +431,10 @@ export default function Home() {
               @getpiqu
             </a>
           </div>
+          </div>
         </div>
       </RevealSection>
     </main>
+    </>
   );
 }

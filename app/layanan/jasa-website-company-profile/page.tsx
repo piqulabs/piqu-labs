@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Jasa website company profile profesional hingga 5 halaman. Form kontak, Google Maps, SEO dasar. Cocok kantor, klinik, & bisnis jasa di Bandung. Mulai Rp1.200.000.",
   alternates: {
-    canonical: "https://piqulabs.dev/layanan/jasa-website-company-profile",
+    canonical: "https://piqulabs.com/layanan/jasa-website-company-profile",
   },
 };
 

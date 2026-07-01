@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Jasa website dengan sistem booking online untuk klinik, salon, barbershop & travel di Bandung. Manajemen jadwal, notifikasi WhatsApp, dashboard admin. Mulai Rp1.500.000.",
   alternates: {
-    canonical: "https://piqulabs.dev/layanan/jasa-website-booking-online",
+    canonical: "https://piqulabs.com/layanan/jasa-website-booking-online",
   },
 };
 

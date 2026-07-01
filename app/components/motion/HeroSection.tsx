@@ -72,11 +72,7 @@ function HeroCopy({ animated }: { animated: boolean }) {
         <div className="relative">
           <div
             aria-hidden
-            className="pointer-events-none absolute -left-12 top-1/2 h-56 w-[130%] -translate-y-1/2 opacity-30 blur-3xl"
-            style={{
-              background:
-                "radial-gradient(ellipse at 30% 50%, rgba(169, 113, 63, 0.35) 0%, transparent 65%)",
-            }}
+            className="pointer-events-none absolute -left-12 top-1/2 h-64 w-[140%] -translate-y-1/2 section-glow"
           />
           {heading}
         </div>
@@ -98,11 +94,7 @@ function HeroCopy({ animated }: { animated: boolean }) {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-12 top-1/2 h-56 w-[130%] -translate-y-1/2 opacity-30 blur-3xl"
-          style={{
-            background:
-              "radial-gradient(ellipse at 30% 50%, rgba(169, 113, 63, 0.35) 0%, transparent 65%)",
-          }}
+          className="pointer-events-none absolute -left-12 top-1/2 h-64 w-[140%] -translate-y-1/2 section-glow"
         />
         <motion.div variants={itemVariants}>{heading}</motion.div>
       </div>
@@ -135,12 +127,14 @@ export function HeroSection() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="flex min-h-[100dvh] items-center px-6 py-12 lg:py-16">
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-14">
+    <section className="relative bg-bg px-6 py-12 lg:py-16">
+      <div className="mx-auto flex min-h-[calc(100dvh-8rem)] w-full max-w-6xl items-center">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div className="text-center lg:text-left">
           <HeroCopy animated={!reduce} />
         </div>
         <HeroVisual />
+        </div>
       </div>
     </section>
   );

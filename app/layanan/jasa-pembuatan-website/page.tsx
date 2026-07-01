@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Jasa pembuatan website profesional untuk UMKM di Bandung & Cimahi. Landing page cepat, mobile responsive, domain & hosting 1 tahun. Mulai Rp900.000.",
   alternates: {
-    canonical: "https://piqulabs.dev/layanan/jasa-pembuatan-website",
+    canonical: "https://piqulabs.com/layanan/jasa-pembuatan-website",
   },
 };
 
