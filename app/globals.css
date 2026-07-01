@@ -1,26 +1,33 @@
 @import "tailwindcss";
 
+@theme {
+  --color-bg: #0A0A0A;
+  --color-surface: #16120E;
+  --color-surface-2: #1E1813;
+  --color-border-soft: #2A2320;
+
+  --color-bronze-dark: #6E4A2C;
+  --color-bronze: #A9713F;        /* aksen utama */
+  --color-bronze-light: #C99A6A;
+  --color-gold: #E3B989;
+
+  --color-content: #F5F1EB;       /* teks utama */
+  --color-content-muted: #A69B8D; /* teks sekunder */
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --gradient-heading: linear-gradient(90deg, #C99A6A, #8A5A34);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-content);
+}
+
+/* buat heading gradient kayak "LIST"/"CARD" */
+.text-gradient {
+  background: var(--gradient-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
