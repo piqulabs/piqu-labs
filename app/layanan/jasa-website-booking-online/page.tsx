@@ -47,7 +47,7 @@ export default function JasaWebsiteBookingOnlinePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="mx-auto max-w-4xl px-6 py-24">
+      <article className="mx-auto max-w-4xl px-6 py-16 md:py-24">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
           Jasa Website{" "}
           <span className="text-gradient">Booking Online</span>

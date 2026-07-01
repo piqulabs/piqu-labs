@@ -43,7 +43,7 @@ export function PortfolioProjectCard({ project }: { project: Project }) {
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex h-10 w-fit items-center justify-center rounded-full border border-border-soft px-5 text-sm font-medium transition-colors hover:border-bronze/50 hover:bg-surface-2"
+          className="mt-5 inline-flex h-12 w-fit items-center justify-center rounded-full border border-border-soft px-5 text-sm font-medium transition-colors hover:border-bronze/50 hover:bg-surface-2"
         >
           Lihat Live
         </a>

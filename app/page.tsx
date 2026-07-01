@@ -209,7 +209,7 @@ export default function Home() {
       </div>
 
       {/* LAYANAN */}
-      <RevealSection className="bg-bg px-6 py-24">
+      <RevealSection className="bg-bg px-6 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="01 / LAYANAN"
@@ -230,7 +230,7 @@ export default function Home() {
       </RevealSection>
 
       {/* PORTFOLIO */}
-      <RevealSection id="portfolio" className="bg-surface px-6 py-24">
+      <RevealSection id="portfolio" className="bg-surface px-6 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="02 / PORTFOLIO"
@@ -251,7 +251,7 @@ export default function Home() {
       </RevealSection>
 
       {/* RATE CARD */}
-      <RevealSection className="bg-bg px-6 py-24">
+      <RevealSection className="bg-bg px-6 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="03 / HARGA"
@@ -265,7 +265,12 @@ export default function Home() {
 
           <StaggerGroup className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {pricing.map((plan) => (
-              <StaggerItem key={plan.name}>
+              <StaggerItem key={plan.name} className="relative h-full">
+                {plan.popular && (
+                  <span className="absolute -top-3 left-6 z-10 rounded-full bg-bronze px-3 py-0.5 text-xs font-medium text-content">
+                    MOST POPULAR
+                  </span>
+                )}
                 <MotionCard
                   className={`relative flex h-full flex-col rounded-2xl border p-6 ${
                     plan.popular
@@ -273,11 +278,6 @@ export default function Home() {
                       : "border-border-soft bg-surface"
                   }`}
                 >
-                  {plan.popular && (
-                    <span className="absolute -top-3 left-6 rounded-full bg-bronze px-3 py-0.5 text-xs font-medium text-content">
-                      MOST POPULAR
-                    </span>
-                  )}
                   <h3 className="text-lg font-semibold">{plan.name}</h3>
                   <p className="mt-2 text-2xl font-bold text-bronze-light">
                     {plan.price}
@@ -310,7 +310,7 @@ export default function Home() {
       </RevealSection>
 
       {/* KENAPA PIQU */}
-      <RevealSection className="bg-surface px-6 py-24">
+      <RevealSection className="bg-surface px-6 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 lg:grid-cols-5">
             <div className="lg:col-span-2">
@@ -345,7 +345,7 @@ export default function Home() {
       </RevealSection>
 
       {/* PROSES KERJA */}
-      <RevealSection className="bg-bg px-6 py-24">
+      <RevealSection className="bg-bg px-6 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="05 / PROSES"
@@ -379,7 +379,7 @@ export default function Home() {
       </RevealSection>
 
       {/* FAQ */}
-      <RevealSection className="bg-surface px-6 py-24">
+      <RevealSection className="bg-surface px-6 py-16 md:py-24">
         <div className="mx-auto max-w-3xl">
           <SectionHeader
             eyebrow="06 / FAQ"
@@ -397,7 +397,7 @@ export default function Home() {
       </RevealSection>
 
       {/* CTA AKHIR */}
-      <RevealSection className="bg-bg px-6 py-24">
+      <RevealSection className="bg-bg px-6 py-16 md:py-24">
         <div className="relative mx-auto max-w-4xl">
           <div
             aria-hidden

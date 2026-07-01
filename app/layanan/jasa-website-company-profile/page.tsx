@@ -47,7 +47,7 @@ export default function JasaWebsiteCompanyProfilePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="mx-auto max-w-4xl px-6 py-24">
+      <article className="mx-auto max-w-4xl px-6 py-16 md:py-24">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
           Jasa Website{" "}
           <span className="text-gradient">Company Profile</span>
@@ -88,7 +88,7 @@ export default function JasaWebsiteCompanyProfilePage() {
 
         <section className="mt-12">
           <h2 className="text-xl font-semibold">Contoh struktur halaman</h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-xl border border-border-soft bg-surface p-5">
               <p className="font-medium">Klinik kesehatan</p>
               <p className="mt-2 text-sm text-content-muted">
